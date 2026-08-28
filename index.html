@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>6 meses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- fondo espacial persistente -->
+<div id="space-bg" aria-hidden="true">
+  <canvas id="starfield"></canvas>
+  <div class="nebula nebula--violet"></div>
+  <div class="nebula nebula--blue"></div>
+  <div class="cosmic-dust"></div>
+  <div class="cosmic-vignette"></div>
+</div>
+
+<!-- ESCENA 1: Portada / libro -->
+<section id="scene-book" class="scene scene--active">
+  <div class="book">
+    <div class="book__page" id="book-page">
+      <p class="book__text" id="book-text"></p>
+    </div>
+    <button class="book__continue" id="book-continue">↵ Enter / toca para continuar</button>
+  </div>
+</section>
+
+<!-- ESCENA 2: Constelación -->
+<section id="scene-map" class="scene">
+  <div class="map-header">
+    <p class="eyebrow">nuestra constelación</p>
+    <p class="map-progress" id="map-progress">0 / 7 cartas leídas</p>
+  </div>
+
+  <div id="constellation-points">
+    <div class="constellation-aura" aria-hidden="true"></div>
+    <svg id="constellation-lines" aria-hidden="true"></svg>
+    <div class="completion-flare" aria-hidden="true"></div>
+  </div>
+
+  <!-- panel de pistas -->
+  <div id="clue-panel" class="clue-panel">
+    <button id="clue-toggle" class="clue-toggle" aria-expanded="false">
+      <span class="clue-toggle__dot"></span> pistas
+    </button>
+    <div id="clue-list" class="clue-list is-collapsed"></div>
+    <div id="answer-box" class="answer-box is-hidden">
+      <p class="answer-box__label">¿ya la descifraste?</p>
+      <div id="answer-puzzle" class="answer-puzzle" aria-label="respuesta de siete letras"></div>
+      <div class="answer-box__row">
+        <input type="text" id="answer-input" placeholder="escribe aquí" autocomplete="off" />
+        <button id="answer-submit">↵</button>
+      </div>
+      <p class="answer-box__feedback" id="answer-feedback"></p>
+    </div>
+  </div>
+
+  <!-- modal de carta -->
+  <div id="carta-modal" class="carta-modal is-hidden">
+    <div class="carta-modal__backdrop" id="carta-backdrop"></div>
+    <div class="carta-modal__card">
+      <button class="carta-modal__close" id="carta-close" aria-label="cerrar">×</button>
+      <p class="carta-modal__eyebrow" id="carta-fecha"></p>
+      <h2 class="carta-modal__title" id="carta-titulo"></h2>
+      <p class="carta-modal__text" id="carta-texto"></p>
+
+      <div class="carta-modal__photos" id="carta-photos">
+        <div class="photo-slot" id="photo-slot-1"><img id="photo-1" alt="" /></div>
+        <div class="photo-slot" id="photo-slot-2"><img id="photo-2" alt="" /></div>
+      </div>
+
+      <div class="carta-modal__song" id="carta-song"></div>
+
+      <button class="btn-solid" id="btn-marcar-leida">marcar como leída</button>
+    </div>
+  </div>
+</section>
+
+<!-- ESCENA 3: Carta final -->
+<section id="scene-final" class="scene">
+  <div class="final-wrap">
+    <p class="eyebrow">seis meses después</p>
+    <div class="final-letter" id="final-letter-text"></div>
+  </div>
+</section>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
