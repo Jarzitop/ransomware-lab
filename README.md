@@ -1,64 +1,72 @@
-# Regalo — 6 meses 🌌
+# Regalo — 6 meses · V3
 
-## Visual V2
+Sitio estático HTML/CSS/JS. La V3 prioriza estética espacial, rendimiento y microinteracciones.
 
-La galaxia usa un campo estelar generado en `canvas`, estrellas con brillo irregular,
-nebulosas CSS, parallax suave, estrellas fugaces ocasionales y una constelación que
-se ilumina progresivamente al leer cartas. Respeta `prefers-reduced-motion`.
+## Cambios V3
 
-Sitio de una sola página. La experiencia empieza directamente en una portada tipo libro,
-sin cuenta regresiva. Todo el contenido vive en **`data.js`** — no necesitas tocar el resto
-de los archivos para personalizarlo. La portada avanza con clic/touch o con la tecla **Enter**.
+- Se eliminó el loop propio que repintaba cientos de estrellas cada frame.
+- Fondo con **tsParticles Slim** (CDN), limitado a 30–45 FPS según dispositivo.
+- Fallback CSS si el CDN no carga.
+- Parallax agrupado con `requestAnimationFrame` en lugar de escribir estilos por cada evento del mouse.
+- Constelación con jerarquía visual mayor y áreas de clic grandes.
+- Zoom inmersivo con Web Animations API; se ejecuta **una sola vez** y queda persistido.
+- 4 easter eggs que desbloquean poemas.
+- Portada y poemas con estética de papel físico + tipografía Caveat.
+- Estado extendido sin romper el progreso previo de `localStorage`.
 
-## Qué falta antes de mandárselo
+## Probar desde cero
 
-1. **Fotos** — pon 14 fotos (2 por carta) en `assets/fotos/` con los nombres
-   indicados en `assets/fotos/LEEME.txt`. O cambia las rutas directamente en
-   `data.js`, en el campo `fotos: [...]` de cada carta.
+Si el navegador ya guardó las 7 cartas como leídas, abre una sola vez:
 
-2. **Canciones** — en Spotify: abre la canción → Compartir → Copiar link.
-   Pega ese link en el campo `spotifyUrl` de la carta correspondiente en
-   `data.js`. Ejemplo:
-   ```js
-   spotifyUrl: "https://open.spotify.com/track/xxxxxxxxxxxx"
-   ```
-   Si lo dejas en `null`, esa carta simplemente no muestra reproductor.
-
-3. **Revisa el puzzle** — al final de `data.js` están `RESPUESTA_FINAL` y
-   `PISTAS`. Ahora mismo arman la respuesta de 7 letras **"TE ELIJO"** usando palabras
-   reales de tus cartas (Trattoria, Juan Valdez, la empanada, Olivia, la
-   energía de los pulgares, lo increíble de Ratatouille, y "levanto" de la
-   última carta). Si quieres cambiar la respuesta o las pistas, edita ese
-   bloque — cada pista tiene `revelaEnCarta` (qué carta la desbloquea al
-   leerla) y `letra` (qué letra aporta, en el orden de `orden`).
-
-4. **La carta final** (`CARTA_FINAL`) es un borrador mío basado en el tono
-   de tus 7 cartas. Léela, cámbiala, hazla tuya — es lo más importante del
-   sitio.
-
-## Cómo agregar contenido después (al año, etc.)
-
-Solo agrega un objeto nuevo al array `CARTAS` en `data.js`, con un `id`
-nuevo y su `fecha`. La constelación se actualiza sola — no hay que tocar
-ningún otro archivo.
-
-## Cómo publicarlo (gratis, sin dominio)
-
-1. Crea una cuenta en [vercel.com](https://vercel.com) (puedes usar tu
-   cuenta de GitHub).
-2. Sube esta carpeta a un repositorio de GitHub (o arrastra la carpeta
-   directo en Vercel con "Add New Project" → sin necesidad de Git si usas
-   la opción de subir carpeta).
-3. Vercel detecta que es un sitio estático — dale "Deploy" sin cambiar
-   ninguna configuración (no hay build step, es HTML/CSS/JS puro).
-4. Te da un link tipo `tu-proyecto.vercel.app` — ese es el que le mandas.
-
-## Estructura de archivos
-
+```text
+https://jarzitop.github.io/ransomware-lab/?reset=1
 ```
-index.html    → estructura de las 3 escenas
-style.css     → toda la identidad visual
-app.js        → toda la lógica/interacción
-data.js       → TODO el contenido (esto es lo único que editas normalmente)
-assets/fotos/ → tus 14 fotos van aquí
+
+El parámetro borra el estado local y luego desaparece de la URL.
+
+## Archivos
+
+```text
+index.html
+style.css
+app.js
+data.js
+assets/fotos/   # todavía pendiente
 ```
+
+## Fotos
+
+`data.js` espera dos fotos por carta:
+
+```text
+assets/fotos/mes0-1.jpg
+assets/fotos/mes0-2.jpg
+...
+assets/fotos/mes6-2.jpg
+```
+
+## Canciones
+
+Cada objeto de `CARTAS` tiene `spotifyUrl: null`. Pega ahí el enlace de Spotify cuando se defina una canción significativa para ese mes.
+
+## Poemas secretos
+
+Los 4 borradores están en `POEMAS` dentro de `data.js`:
+
+- Oda a tu cuerpo
+- Oda a tu cerebro
+- Oda a tu corazón
+- Oda a ti
+
+La lógica no depende del texto, así que pueden reescribirse después sin tocar `app.js`.
+
+## Easter eggs
+
+1. Una marca diminuta en la portada.
+2. Una nebulosa casi invisible que responde a la atención.
+3. Una estrella pequeña que necesita una segunda señal.
+4. Una estrella fugaz especial que aparece de vez en cuando.
+
+## Dependencia externa
+
+Se usa `@tsparticles/engine@4` + `@tsparticles/slim@4` desde jsDelivr. Si falla el CDN, el fondo espacial sigue funcionando con el fallback CSS.

@@ -1,16 +1,9 @@
 // ============================================================
-// DATOS DEL REGALO — edita este archivo para actualizar contenido
+// CONTENIDO DEL REGALO
 // ============================================================
 
-// Fecha en que empezó la relación (para el contador de "días juntos"
-// y como coordenada de la Carta 0)
 const FECHA_INICIO = "2026-02-27";
 
-// Las 7 cartas. Cada una es un punto en la constelación.
-// fecha: se usa para la etiqueta tipo coordenada y para ordenarlas.
-// fotos: rutas dentro de assets/fotos/ — reemplaza por las tuyas.
-// spotifyUrl: pega aquí el link de "compartir > copiar link" de Spotify
-//             (se convierte automáticamente en reproductor embebido).
 const CARTAS = [
   {
     id: 0,
@@ -51,7 +44,7 @@ const CARTAS = [
   {
     id: 4,
     mes: "Mes 4",
-    titulo: "El día que se regaló solo",
+    titulo: "tu y yo cogidos de la mano",
     fecha: "2026-06-27",
     texto: `Ese día te vi de la nada, habías venido a acompañar a tu papá a hacer una vuelta, y antes tenías una cita médica aquí en mi ciudad, así que nos vimos casi sin planearlo, y para mí fue una locura buena, como si el día se hubiera regalado solo. Comimos en La Trattoria del Teatro, riquísimo, y después caminamos y caminamos sin parar, como si lleváramos meses queriendo un día así de simple. Me acompañaste a comprar ropa, y hoy, escribiendo esto, todavía tengo puesta la camisa que compré esa tarde. Pasamos por Juan Valdez, hablé con tu papá un microsegundo y me dio un poco de miedo jajaja, cuidamos nuestras mascotas virtuales, y hasta descubrimos que compartimos el mismo odio por Petro. Otro día, me desperté pensando en ti después de uno de esos sueños que me da pena contarte, y te di las flores más lindas que te he dado, solo porque no dejaba de pensar en ti, y también tuvimos nuestras propias discusiones sobre nosotros, sobre lo que somos, y ahí entendí algo: a pesar de los problemas y las vainas que hemos tenido, tú y yo siempre brillamos, siempre somos nosotros. Encuentras maneras de hacerme feliz y de ayudarme a crecer, y yo trato de sacarte una sonrisa y consentirte siempre, y es raro, porque en el momento me enfrascaba en lo malo, y hoy, mirando atrás, solo puedo pensar en lo bonito. Te amo.`,
     fotos: ["assets/fotos/mes4-1.jpg", "assets/fotos/mes4-2.jpg"],
@@ -77,10 +70,6 @@ const CARTAS = [
   }
 ];
 
-// El puzzle: leer cada carta desbloquea UNA pista sobre OTRA carta.
-// "revelaEnCarta": la carta cuya lectura desbloquea esta pista.
-// "letra": la letra que aporta a la respuesta final (en orden).
-// La respuesta final normaliza mayúsculas/acentos/espacios al validar.
 const RESPUESTA_FINAL = "TE ELIJO";
 
 const PISTAS = [
@@ -135,7 +124,6 @@ const PISTAS = [
   }
 ];
 
-// Texto de la portada (pantalla tipo libro, se avanza tocando/Enter)
 const PORTADA = [
   "Hola, amor. ¿Cómo vas?",
   "Este es tu regalo de seis meses. Te amo mucho. Te lo manda tu novio, con mucho amor.",
@@ -144,8 +132,30 @@ const PORTADA = [
   "Con amor, tu novio."
 ];
 
-// BORRADOR de la carta final — escrito con el mismo tono de tus 7 cartas.
-// Cámbialo por completo, es solo un punto de partida.
+// Primeros borradores. Podemos reescribirlos juntos después sin tocar la lógica.
+const POEMAS = [
+  {
+    id: "cuerpo",
+    titulo: "Oda a tu cuerpo",
+    texto: `Me gusta tu cuerpo\nporque cuando te abrazo\nel mundo deja de hacer ruido.\n\nTus manos, tu pelo, tu sonrisa,\nesa forma tuya de acercarte a mí:\ncada pedacito de ti\nse volvió una manera de sentirme en casa.`
+  },
+  {
+    id: "cerebro",
+    titulo: "Oda a tu cerebro",
+    texto: `Me enamora la forma en que piensas,\nlas preguntas que haces,\nlas cosas absurdas que recuerdas\ny las ideas que solo a ti se te ocurren.\n\nMe gusta escucharte descubrir el mundo,\nporque hasta cuando no pienso como tú,\nquiero saber cómo llegaste hasta ahí.`
+  },
+  {
+    id: "corazon",
+    titulo: "Oda a tu corazón",
+    texto: `Tu corazón a veces se protege,\na veces pelea y a veces se asusta,\npero incluso así encuentra espacio para cuidar.\n\nYo he tenido la suerte\nde conocer esa parte de ti\nque no todo el mundo alcanza a ver,\ny cada vez quiero cuidarla mejor.`
+  },
+  {
+    id: "ti",
+    titulo: "Oda a ti",
+    texto: `Podría separar lo que amo de ti:\ntu cuerpo, tu cabeza, tu corazón.\nPero al final siempre me pasa lo mismo:\nno sé dónde termina una cosa y empieza la otra.\n\nAsí que esta última oda es más simple:\nme gustas tú, completa,\ncon todo lo fácil y todo lo difícil.\nY te sigo eligiendo.`
+  }
+];
+
 const CARTA_FINAL = `Llegaste hasta acá, y eso ya dice algo de ti: no te rindes fácil, ni siquiera con un rompecabezas que te dejé a propósito difícil.
 
 Seis meses no es mucho tiempo si lo cuentas en calendario, pero si lo cuento en todo lo que ya vivimos, en las peleas de las que aprendimos, en Sabores de Película, en Juan Valdez, en las noches en mi casita, en las cosas pequeñas que ahora son nuestras, seis meses se sienten como una vida entera empezando.
